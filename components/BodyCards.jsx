@@ -10,12 +10,12 @@ export default function BodyCards() {
   return (
     <View>
         <Text style={{fontSize: wp(5)}} className='font-bold tracking-wide text-neutral-700'> EXERCISES </Text>
-
         <FlatList
             data={bodyParts}
             numColumns={2}
             keyExtractor={(item) => item.name}
-            showsVerticalScrollIndicator={false}
+            nestedScrollEnabled={true}
+            scrollEnabled={false}
             contentContainerStyle={{paddingBottom: 32, paddingTop: 10}}
             columnWrapperStyle={{justifyContent: 'space-between'}}
             renderItem={({item, index}) => 
