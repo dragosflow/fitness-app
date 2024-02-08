@@ -16,7 +16,7 @@ import {
 import { sliderImages } from '../constants';
 
 const width = wp(100);
-const IMG_WIDTH = width * 0.75;
+const IMG_WIDTH = width * 0.90;
 const IMG_HEIGHT = IMG_WIDTH * 0.70;
 
 const img = sliderImages;
