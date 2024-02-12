@@ -8,26 +8,26 @@ import { StatusBar } from "expo-status-bar";
 import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 import { LinearGradient } from "expo-linear-gradient";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import Animated, { FadeInUp } from "react-native-reanimated";
+import Animated, {FadeInDown, FadeInUp } from "react-native-reanimated";
 import ExerciseCardsList from "../components/ExerciseCardsList";
 
 
 export default function Exercises() {
   const router = useRouter();
-  const [exercises, setExercises] = useState(mockData);
+  const [exercises, setExercises] = useState({});
   const item = useLocalSearchParams();
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   if(item) {
-  //     getExercises(item.name)
-  //   }
+    if(item) {
+      getExercises(item.name)
+    }
 
-  // }, [item]);
+  }, [item]);
 
 
   const getExercises = async (bodyPart) => {
     const data = await fetchBodyPartExercise(bodyPart);
-    setExercise(data);
+    setExercises(data);
   }
 
   return (
@@ -35,6 +35,7 @@ export default function Exercises() {
       <StatusBar style='light'/>
       <Animated.View
         entering={FadeInUp.delay(300)}
+        exiting={FadeInDown}
       >
         <Image 
           style={{width: wp(100), height: hp(45)}} 
@@ -58,7 +59,7 @@ export default function Exercises() {
       </Animated.View>
       <View style={{width: wp(90)}} className='flex mx-auto mt-2'>
         <Text style={{fontSize: wp(6)}} className='text-neutral-700 font-bold tracking-wider'>{item.name.toUpperCase()} EXERCICES</Text>
-        <ExerciseCardsList data={mockData} />
+        <ExerciseCardsList data={exercises} />
       </View>
     </ScrollView>
   );

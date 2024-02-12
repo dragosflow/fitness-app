@@ -11,6 +11,11 @@ export default function _layout(){
                 }}
             />
 
+            <Stack.Screen name="exerciseDetails" options={{
+                    presentation: 'modal'
+                }}
+            />
+
         </Stack>
 
     );

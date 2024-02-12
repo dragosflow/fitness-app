@@ -3,12 +3,12 @@ import React from "react";
 import { Image } from "expo-image";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from "react-native-responsive-screen";
 import Animated, { FadeInUp } from "react-native-reanimated";
+import { useRouter } from "expo-router";
 
 export default function ExerciseCard({item, router, index}) {
-  console.log(item.gifUrl)
   return (
     <Animated.View entering={FadeInUp.delay(200).springify()} style={{maxWidth: wp(40)}}>
-      <TouchableOpacity className='flex-1 space-y-2 '>
+      <TouchableOpacity onPress={()=> router.push({pathname: '/exerciseDetails', params: item})} className='flex-1 space-y-2 '>
         <View className='bg-neutral-200 shadow rounded-lg mt-8'>
           <Image
             source={{uri: item.gifUrl}}  
