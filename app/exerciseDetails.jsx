@@ -26,7 +26,7 @@ export default function exerciseDetails() {
                     {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
                 </Animated.Text>
                 <Animated.Text entering = {FadeInDown.delay(300).springify()} style={{fontSize: hp(2)}} className='text-neutral-700 tracking-wide mb-1'>
-                    Equipment <Animated.Text entering = {FadeInDown.delay(300).springify()} className='font-bold text-neutral-800'>
+                    Equipment : <Animated.Text entering = {FadeInDown.delay(300).springify()} className='font-bold text-neutral-800'>
                         {item?.equipment}
                     </Animated.Text>
                 </Animated.Text>
@@ -45,7 +45,7 @@ export default function exerciseDetails() {
                     Instructions
                 </Animated.Text>
                     {
-                        item.instructions.split(',').map((instruction, index) => {
+                        item.instructions.split(/,(?=[A-Z])/).map((instruction, index) => {
                             return(
                                 <Animated.Text entering = {FadeInDown.delay(300).springify()} key={index} style={{fontSize: hp(2)}} className='font-semibold text-neutral-700 tracking-wide mb-10'>
                                     {index+1}. {instruction}
